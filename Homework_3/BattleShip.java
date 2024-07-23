@@ -34,7 +34,6 @@ public class BattleShip {
         {'-', '-', '-', '-', '-'}};
 
         boolean gameOver = false;
-
         do { 
             Scanner input = new Scanner(System.in);
             for(int player = 1; player < 3; player++) {
