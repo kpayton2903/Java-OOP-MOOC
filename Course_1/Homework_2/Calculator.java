@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Calculator {
+    @SuppressWarnings("resource")
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("List of operations: add subtract multiply divide alphabetize");

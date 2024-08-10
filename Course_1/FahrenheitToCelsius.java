@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class FahrenheitToCelsius {
     public static void main(String[] args) {
+        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
         System.out.print("Enter a Fahrenheit value: ");
         int fahrenheit = input.nextInt();
