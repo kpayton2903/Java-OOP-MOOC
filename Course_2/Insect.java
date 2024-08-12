@@ -3,7 +3,10 @@ public class Insect {
     private int x;
     private int y;
 
+    public static final int DEFAULT_X = 0;
+    public static final int DEFAULT_Y = 0;
     private static final double DIST_WEIGHT_LOSS_FACTOR = .0001;
+    @SuppressWarnings("unused")
     private static int population = 0;
     private static final String[] FACTS = {
         "The two main groups of insects are winged and wingless",
@@ -12,11 +15,47 @@ public class Insect {
         "Spiders are not considered insects"
     };
 
-    public Insect(double initWeight, int initX, int initY) {
-        weight = initWeight;
-        x = initX;
-        y = initY;
+    public Insect(double initWeight) {
+        this(initWeight, DEFAULT_X, DEFAULT_Y);
+    }
+
+    public Insect(double weight, int x, int y) {
+        this.weight = weight;
+        this.x = x;
+        this.y = y;
         population++;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        if (isLegalX(x)) {
+            this.x = x;
+        }
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void sety(int y) {
+        if (isLegalY(y)) {
+            this.y = y;
+        }
+    }
+
+    public static boolean isLegalX(int newX) {
+        return (newX >= 0);
+    }
+
+    public static boolean isLegalY(int newY) {
+        return (newY >= 0);
     }
 
     public void eat(double amount) {
@@ -43,6 +82,11 @@ public class Insect {
     public static String produceRandomFact() {
         int index = (int)(Math.random() * ((FACTS.length - 1) + 1));
         return FACTS[index];
+    }
+
+    @Override
+    public String toString() {
+        return "weight: " + weight + ", x: " + x + ", y: " + y;
     }
 
     public static void main(String[] args) {
