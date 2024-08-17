@@ -23,13 +23,7 @@ public class Fly {
     }
 
     public final void setMass(double mass) {
-        if(isLegalMass(mass)) {
-            this.mass = mass;
-        }
-    }
-
-    private boolean isLegalMass(double mass) {
-        return (mass >= 0);
+        this.mass = mass;
     }
 
     public final double getSpeed() {
@@ -37,36 +31,31 @@ public class Fly {
     }
 
     public final void setSpeed(double speed) {
-        if(isLegalSpeed(speed)) {
-            this.speed = speed;
-        }
+        this.speed = speed;
     }
 
-    private boolean isLegalSpeed(double speed) {
-        return (speed >= 0);
-    }
-    
     public String toString() {
         if (mass == 0){
-            return String.format("I'm dead, but I used to be a fly with a speed of %f.", 
+            return String.format("I'm dead, but I used to be a fly with a speed of %.2f.", 
             speed);
         }
         else {
-            return String.format("I'm a speedy fly with %f speed and %f mass.",
+            return String.format("I'm a speedy fly with %.2f speed and %.2f mass.",
             speed, mass);
         }
     }
 
-    public void grow(int mass) {
+    public void grow(int newMass) {
         int i;
-        for (i = mass; i > 0; i--){
+        for (i = newMass; i > 0; i--){
             if (mass < 20) {
-                speed++;
-                mass++;
+                setSpeed(speed + 1);
+                setMass(mass + 1);
             }
+
             else {
-                speed = speed - 0.5;
-                mass++;
+                setSpeed(speed - 0.5);
+                setMass(mass + 1);
             }
         }
     }

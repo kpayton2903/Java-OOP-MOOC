@@ -18,13 +18,7 @@ public class Frog {
     }
 
     public Frog(String name, double ageInYears, double tongueSpeed) {
-        int ageInMonths = (int) (ageInYears * 12);
-        this.name = name;
-        this.age = ageInMonths;
-        this.tongueSpeed = tongueSpeed;
-        if(age > 1 && age < 7) {
-            this.isFroglet = true;
-        }
+        this(name, (int) ageInYears*12, tongueSpeed);
     }
 
     public Frog(String name) {
@@ -46,6 +40,9 @@ public class Frog {
         if(isFroglet != true && age > 1 && age < 7) {
             this.isFroglet = true;
         }
+        else if(isFroglet == true && !(age > 1 && age < 7)) {
+            this.isFroglet = false;
+        }
     }
 
     public void grow() {
@@ -56,10 +53,36 @@ public class Frog {
         if (fly.isDead()) {
             return;
         }
+
         else if (tongueSpeed > fly.getSpeed()) {
             if (fly.getMass() > (0.5 * age)) {
-                
+                grow();
             }
+            fly.setMass(0);
         }
+
+        else {
+            fly.grow(1);
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (isFroglet) {
+            return String.format("My name is %s and I'm a rare froglet! I'm %d months old and my tongue has a speed of %.2f.",
+            name, age, tongueSpeed);
+        }
+        else {
+            return String.format("My name is %s and I'm a rare frog. I'm %d months old and my tongue has a speed of %.2f.",
+            name, age, tongueSpeed);
+        }
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String newSpecies) {
+        species = newSpecies;
     }
 }
