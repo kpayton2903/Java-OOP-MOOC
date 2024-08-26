@@ -20,6 +20,7 @@ public class Car implements Groomable {
         }
     }
 
+    @Override
     public void groom() {
         if (speed == 0) {
             System.out.println("soap, rinse, wax, and little tree air freshener");

@@ -9,6 +9,7 @@ public class Poodle extends Dog {
             this.favoriteConditioner = favoriteConditioner;
         }
 
+    @Override
     public void groom() {
         System.out.println(favoriteShampoo + " rinse "
             + favoriteConditioner + " wait 10 mins "
