@@ -1,4 +1,4 @@
-public class Canine {
+public abstract class Canine implements Groomable {
     protected double size;
 
     public Canine(double size) {

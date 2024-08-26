@@ -1,8 +1,15 @@
 public class GroomEverything {
     public static void main(String[] args) {
-        Object[] groomer = {
+        Groomable[] groomer = {
             new Wolf(17.01, 3),
-            new Poodle("richie", 9 , "Lux brand", "Only the Best")
+            new Poodle("richie", 9 , "Lux brand", "Rich Brand"),
+            new Wolf(16, 5),
+            new Poodle("pixy", 4, "Top Shelf", "Only the Best"),
+            new Car("Yuhina", "Spark", 2037)
+        };
+
+        for (Groomable g : groomer) {
+            g.groom();
         }
     }
 }
