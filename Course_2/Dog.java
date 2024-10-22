@@ -17,6 +17,10 @@ public class Dog extends Canine {
         spot.bark();
     }
 
+    @Override
+    public void groom(){}
+
+    @Override
     public boolean equals(Object o) {
         if (!(o instanceof Dog)) {
             return false;
