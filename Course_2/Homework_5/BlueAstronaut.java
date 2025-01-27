@@ -21,12 +21,18 @@ public class BlueAstronaut extends Player implements Crewmate {
             Arrays.sort(playerArray);
             int length = playerArray.length;
 
-            if (playerArray[length - 1].getSusLevel() != playerArray[length - 2].getSusLevel()) {
-                playerArray[length - 1].setFrozen(true);
+            for (int i = length-1; i >= 0; i--){
+                if (playerArray[i].isFrozen())
+                    continue;
+                else {
+                    if (playerArray[i].getSusLevel() != playerArray[i-1].getSusLevel()) {
+                        playerArray[i].setFrozen(true);
+                    }
+                }
+                break;
             }
+            this.gameOver();
         }
-
-        this.gameOver();
     }
 
     @Override
@@ -59,7 +65,7 @@ public class BlueAstronaut extends Player implements Crewmate {
 
     @Override
     public String toString() {
-        String fullString = super.toString() + "I have " + this.numTasks + " left over.";
+        String fullString = super.toString() + " I have " + this.numTasks + " left over.";
 
         if (this.getSusLevel() > 15)
             fullString = fullString.toUpperCase();

@@ -20,18 +20,28 @@ public class RedAstronaut extends Player implements Impostor {
             Arrays.sort(playerArray);
             int length = playerArray.length;
 
-            if (playerArray[length - 1] == this && playerArray[length - 2].getSusLevel() != 
-            playerArray[length - 3].getSusLevel()) {
-                playerArray[length - 2].setFrozen(true);   
-            }
+            for (int i = length-1; i >= 0; i--){
+                if (playerArray[i].isFrozen())
+                    continue;
 
-            else if (playerArray[length - 1] != this && playerArray[length - 1].getSusLevel() != 
-                playerArray[length - 2].getSusLevel()) {
-                    playerArray[length - 1].setFrozen(true);
+                else {
+                    if (playerArray[i] == this) {
+                        if (playerArray[i - 1].getSusLevel() != playerArray[i - 2].getSusLevel()) {
+                            playerArray[i - 1].setFrozen(true);
+                        }
+                    }
+        
+                    else if (playerArray[i] != this) {
+                        if (playerArray[i].getSusLevel() != playerArray[i - 1].getSusLevel()) {
+                            playerArray[i].setFrozen(true);
+                        }
+                    }
+                }
+                break;
             }
+            
+            this.gameOver();
         }
-
-        this.gameOver();
     }
 
     @Override
@@ -73,7 +83,7 @@ public class RedAstronaut extends Player implements Impostor {
 
     @Override
     public String toString() {
-        String fullString = super.toString() + "I am an " + this.skill + " player!";
+        String fullString = super.toString() + " I am an " + this.skill + " player!";
         if (this.getSusLevel() > 15)
             fullString = fullString.toUpperCase();
             
