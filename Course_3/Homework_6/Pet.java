@@ -1,9 +1,9 @@
-public class Pet {
+public abstract class Pet {
     private String name;
     private double health;
     private int painLevel;
 
-    public Pet (String name, double health, int painLevel) {
+    public Pet(String name, double health, int painLevel) {
         this.name = name;
 
         if (health > 1.0) {
@@ -25,5 +25,41 @@ public class Pet {
             this.painLevel = painLevel;
     }
 
-    public 
+    public String getName() {
+        return name;
+    }
+
+    public double getHealth() {
+        return health;
+    }
+
+    public int getPainLevel() {
+        return painLevel;
+    }
+
+    public abstract int treat();
+
+    public void speak() {
+        String printLine = "Hello! My name is " + name;
+        if (painLevel > 5) {
+            System.out.println(printLine.toUpperCase());
+        }
+        else {
+            System.out.println(printLine);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Pet) {
+            Pet comparePet = (Pet) o;
+            return comparePet.name.equals(name);
+        }
+        return false;
+    }
+
+    protected void heal() {
+        this.health = 1.0;
+        this.painLevel = 1;
+    }
 }

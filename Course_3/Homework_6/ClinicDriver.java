@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
  */
 public class ClinicDriver {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidPetException {
         Clinic clinic = new Clinic("Patients.csv");
         String dayOneReport = "";
         try {
@@ -15,9 +15,13 @@ public class ClinicDriver {
         }
         String[] dayOneAppointments = dayOneReport.split("\\n");
         for (String appointment : dayOneAppointments) {
+            clinic.addToFile(appointment);
+            /*
             if (!clinic.addToFile(appointment)) {
                 System.out.println("Appointment could not be added to file!");
             }
+            */
         }
+        System.out.println(dayOneReport);
     }
 }
