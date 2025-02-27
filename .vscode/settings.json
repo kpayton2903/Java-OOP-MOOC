@@ -1,5 +1,6 @@
 {
     "jdk.jdkhome": "c:/Users/Kevin/Oracle_JDK-22",
     "redhat.telemetry.enabled": true,
-    "java.jdt.ls.java.home": "C:/Users/Kevin/Oracle_JDK-22"
+    "java.jdt.ls.java.home": "C:/Users/Kevin/Oracle_JDK-22",
+    "editor.acceptSuggestionOnCommitCharacter": false
 }
