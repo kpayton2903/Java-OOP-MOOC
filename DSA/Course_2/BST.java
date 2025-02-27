@@ -39,6 +39,7 @@ public class BST<T extends Comparable<? super T>> {
         root = addHelper(root, data);
     }
 
+<<<<<<< HEAD
     private BSTNode<T> addHelper(BSTNode<T> current, T data) {
         if (current == null) {
             size++;
@@ -56,6 +57,24 @@ public class BST<T extends Comparable<? super T>> {
         }
 
         return current;
+=======
+    private BSTNode<T> addHelper(BSTNode<T> node, T data) {
+        if (node == null) {
+            size++;
+            return new BSTNode<>(data);
+        }
+
+        int comparison = data.compareTo(node.getData());
+
+        if (comparison < 0) {
+            node.setLeft(addHelper(node.getLeft(), data));
+        }
+        else if (comparison > 0){
+            node.setRight(addHelper(node.getRight(), data));
+        }
+
+        return node;
+>>>>>>> 1cf6649e39f60094d615ea17dbe0b7f0512d3b6b
     }
 
     /**
@@ -90,6 +109,7 @@ public class BST<T extends Comparable<? super T>> {
             throw new IllegalArgumentException("Data cannot be null.");
         }
 
+<<<<<<< HEAD
         BSTNode<T> removed = new BSTNode<>(null);
         root = removeHelper(root, data, removed);
         return removed.getData();
@@ -139,6 +159,17 @@ public class BST<T extends Comparable<? super T>> {
             current.setLeft(removeMin(current.getLeft(), min));
             return current;
         }
+=======
+        T[] removedData = (T[]) new Object[1];
+        root = removeHelper(root, data, removedData);
+
+        if (removedData[0] == null) {
+            throw new NoSuchElementException("Data not found in tree.");
+        }
+
+        size--;
+        return removedData[0];
+>>>>>>> 1cf6649e39f60094d615ea17dbe0b7f0512d3b6b
     }
 
     /**
